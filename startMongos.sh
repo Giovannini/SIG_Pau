@@ -1,0 +1,1 @@
+xterm -e mongos --port 27024 --configdb 127.0.0.1:27020

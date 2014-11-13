@@ -11,7 +11,27 @@ $lat = floatVal($_GET['lat']);
 $dist = floatVal($_GET['dist']);
 
 // remplissage du tableau resultat pour toutes les collections
-// A VOUS !!, ATTENTION étudiez bien le format de retour de la requete geoNear....
+$list = $db->listCollections();
+foreach ($list as $collection) {
+	$cursor = $collection->find(array(
+									'geometry' => array(
+										'$geoWithin' => array(
+											'$center' => array(
+												array($lng, $lat),
+												($dist / 111320)
+												)
+											)
+										)
+									)
+			);
+
+	$data = array();
+	foreach ($cursor as $doc) {
+	    $data[] = $doc;
+	}
+
+    $tabdata[ $collection->getName() ] = $data;
+}
 
 // ecriture du resultat au format json
 echo json_encode($tabdata);

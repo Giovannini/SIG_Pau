@@ -1,4 +1,8 @@
 <?php
-// connexion à la bdd, creation de la variable $db
+	ini_set('display_errors', 'on');
 
+
+	$mongo = new MongoClient("127.0.0.1:27024");
+	$db = $mongo->selectDB('villedepau');
+	//echo "DB created";
 ?>
