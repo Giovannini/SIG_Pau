@@ -1,0 +1,7 @@
+#mamap {
+	height: 98vh;
+	width: 98vw;
+	z-index=0;
+	position:fixed;
+	z-index:1;
+}
